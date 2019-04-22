@@ -103,6 +103,8 @@ namespace TransBall
                 arrButton[i] = btn;
                 disWidth1 += 60;
             }
+
+			arrButton[nArr / 2].Visible = false;
         }
 
         void swapButton(ref Button b1, ref Button b2, ref int a, ref int b)
@@ -155,8 +157,6 @@ namespace TransBall
 			int step = 0;
 			int start = 0;
 			int end = nArr - 1;
-			int left = nArr / 2;
-			int right = nArr / 2;
 
 			while (true)
 			{
@@ -184,7 +184,7 @@ namespace TransBall
 					}
 
 					if (!checkLeft)
-						posMin = posRoot + left;
+						posMin = posRoot + (nArr / 2);
 				}
 				else
 				{
@@ -199,7 +199,7 @@ namespace TransBall
 					}
 
 					if (!checkRight)
-						posMin = posRoot - right;
+						posMin = posRoot - (nArr / 2);
 				}
 
 				swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
@@ -207,17 +207,9 @@ namespace TransBall
 
 				lbBuoc.Text = step.ToString();
 
-				if (arrBalls[start] == arr[start])
-				{
-					start++;
-					left--;
-				}
+				if (arrBalls[start] == arr[start]) start++;
 
-				if (arrBalls[end] == arr[end])
-				{
-					end--;
-					right--;
-				}
+				if (arrBalls[end] == arr[end]) end--;
 
 				bool checkOut = true;
 				for (int i = 0; i < nArr; i++)
