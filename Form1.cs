@@ -162,6 +162,7 @@ namespace TransBall
 			{
 				bool checkLeft = false;
 				bool checkRight = false;
+				int plusStep = step;
 				int posRoot = 0;
 				int min = int.MaxValue;
 				int posMin;
@@ -175,7 +176,7 @@ namespace TransBall
 				{
 					for (int i = start; i < posRoot; i++)
 					{
-						if (arr[i] == 1 && (posRoot - i) < min)
+						if (arr[i] == 1 && (posRoot - i) < min && (posRoot - i) <= 2)
 						{
 							min = posRoot - i;
 							posMin = i;
@@ -183,14 +184,14 @@ namespace TransBall
 						}
 					}
 
-					if (!checkLeft)
-						posMin = posRoot + (nArr / 2);
+					if (!checkLeft && arr[posRoot + 2] == 1)
+						posMin = posRoot + 2;
 				}
 				else
 				{
 					for (int i = end; i > posRoot; i--)
 					{
-						if (arr[i] == 2 && Math.Abs(posRoot - i) < min)
+						if (arr[i] == 2 && Math.Abs(posRoot - i) < min && Math.Abs(posRoot - i) <= 2)
 						{
 							min = Math.Abs(posRoot - i);
 							posMin = i;
@@ -198,8 +199,19 @@ namespace TransBall
 						}
 					}
 
-					if (!checkRight)
-						posMin = posRoot - (nArr / 2);
+					if (!checkRight && arr[posMin - 2] == 2)
+						posMin = posRoot - 2;
+				}
+
+				if (posMin == posRoot && step % 2 != 0)
+				{
+					posMin = posRoot - 1;
+					plusStep++;
+				}
+				else if (posMin == posRoot && step % 2 == 0)
+				{
+					posMin = posRoot + 1;
+					plusStep++;
 				}
 
 				swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
@@ -218,6 +230,9 @@ namespace TransBall
 
 				if (checkOut)
 					break;
+
+				step = plusStep;
+				step++;
 			}
 
 			MessageBox.Show("Hoàn thành !");
