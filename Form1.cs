@@ -19,8 +19,7 @@ namespace TransBall
         }
 
         int nArr = 0;
-        int disWidth1 = 0;
-        int disWidth2 = 60;
+        int disWidth1 = -15;
 
         private int[] arr;
         private int[] arrBalls;
@@ -33,7 +32,7 @@ namespace TransBall
                 for (int i = 0; i < nArr; i++)
                 {
                     gbox.Controls.Remove(arrButton[i]);
-                    disWidth1 = disWidth2 = 60;
+                    disWidth1 = -15;
                 }
 
             try
