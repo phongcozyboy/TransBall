@@ -20,8 +20,9 @@ namespace TransBall
 
         int nArr = 0;
         int disWidth1 = -15;
+		int step = 0;
 
-        private int[] arr;
+		private int[] arr;
         private int[] arrBalls;
         private Button[] arrButton;
 
@@ -38,9 +39,9 @@ namespace TransBall
             try
             {
                 nArr = (2 * int.Parse(txtBi.Text.Trim())) + 1;
-                if(int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 5)
+                if(int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 4)
                 {
-                    MessageBox.Show("số bi có thể từ 1 đến 5 bi");
+                    MessageBox.Show("Vì số lượng không gian bị giới hạn nên bi tối đa là 4", "Thông báo");
                     txtBi.Clear();
                     txtBi.Focus();
                     return;
@@ -85,18 +86,18 @@ namespace TransBall
                 if(i < nArr / 2)
                 {
                     btn.BackColor = Color.Green;
-                    btn.Location = new Point(dis + disWidth1, gbox.Height / 2);
+                    btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
                     gbox.Controls.Add(btn);
                 }
                 else if(i > nArr / 2)
                 {
                     btn.BackColor = Color.Red;
-                    btn.Location = new Point(dis + disWidth1, gbox.Height / 2);
+                    btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
                     gbox.Controls.Add(btn);
                 }
                 else
                 {
-                    btn.Location = new Point(dis + disWidth1, gbox.Height / 2);
+                    btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
                     gbox.Controls.Add(btn);
                 }
                 arrButton[i] = btn;
@@ -109,7 +110,7 @@ namespace TransBall
         void swapButton(ref Button b1, ref Button b2, ref int a, ref int b)
         {
 			int posRoot = b1.Location.Y;
-			while (b1.Location.Y > 70)
+			while (b1.Location.Y > 40)
 			{
 				b1.Location = new Point(b1.Location.X, b1.Location.Y - 4);
 				b2.Location = new Point(b2.Location.X, b2.Location.Y + 4);
@@ -153,7 +154,6 @@ namespace TransBall
 
 		private void btnChay_Click(object sender, EventArgs e)
 		{
-			int step = 0;
 			int start = 0;
 			int end = nArr - 1;
 
@@ -216,8 +216,6 @@ namespace TransBall
 				swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
 
 
-				lbBuoc.Text = step.ToString();
-
 				if (arrBalls[start] == arr[start]) start++;
 
 				if (arrBalls[end] == arr[end]) end--;
@@ -234,7 +232,142 @@ namespace TransBall
 				step++;
 			}
 
-			MessageBox.Show("Hoàn thành !");
+			if (MessageBox.Show("Hoàn Thành ! \nSố bước hoán vị giữa các bi là " + step.ToString() + "\nBạn có muốn chạy lại hay không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				txtBi.Clear();
+				txtBi.Focus();
+
+				for (int i = 0; i < nArr; i++)
+					gbox.Controls.Remove(arrButton[i]);
+					
+
+				disWidth1 = -15;
+				step = 0;
+
+			}
+		}
+
+		private void btnDatLai_Click(object sender, EventArgs e)
+		{
+			txtBi.Clear();
+			txtBi.Focus();
+
+			for (int i = 0; i < nArr; i++)
+				gbox.Controls.Remove(arrButton[i]);
+
+
+			disWidth1 = -15;
+			step = 0;
+		}
+
+		private void btnTaobiRandom_Click(object sender, EventArgs e)
+		{
+			if (arrButton != null)
+				for (int i = 0; i < nArr; i++)
+				{
+					gbox.Controls.Remove(arrButton[i]);
+					disWidth1 = -15;
+				}
+
+			int random_bi;
+			Random rd = new Random();
+			random_bi = rd.Next(1, 4);
+
+			txtBi.Text = random_bi.ToString();
+
+			nArr = (2 * int.Parse(txtBi.Text.Trim())) + 1;
+
+			arr = new int[nArr];
+			arrBalls = new int[nArr];
+			arrButton = new Button[nArr];
+
+			for (int i = 0; i < nArr; i++)
+				arr[i] = arrBalls[i] = 0;
+
+			for (int i = 0; i < nArr; i++)
+			{
+				if (i < (nArr / 2))
+				{
+					arr[i] = 1;
+					arrBalls[i] = 2;
+				}
+				else if (i > (nArr / 2))
+				{
+					arr[i] = 2;
+					arrBalls[i] = 1;
+				}
+			}
+
+			int dis = (gbox.Width / 2) - int.Parse(txtBi.Text.Trim()) * 60;
+
+			//khoi tao giao dien
+			for (int i = 0; i < nArr; i++)
+			{
+				Button btn = new Button();
+				btn.Width = btn.Height = 40;
+				if (i < nArr / 2)
+				{
+					btn.BackColor = Color.Green;
+					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
+					gbox.Controls.Add(btn);
+				}
+				else if (i > nArr / 2)
+				{
+					btn.BackColor = Color.Red;
+					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
+					gbox.Controls.Add(btn);
+				}
+				else
+				{
+					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
+					gbox.Controls.Add(btn);
+				}
+				arrButton[i] = btn;
+				disWidth1 += 60;
+			}
+
+			arrButton[nArr / 2].Visible = false;
+		}
+
+		Color getColor(int indexColor)
+		{
+
+			if (indexColor == 0) return Color.Red;
+			if (indexColor == 1) return Color.Orange;
+			if (indexColor == 2) return Color.Yellow;
+			if (indexColor == 3) return Color.Green;
+			if (indexColor == 4) return Color.Blue;
+			if (indexColor == 5) return Color.Indigo;
+			if (indexColor == 6) return Color.Purple;
+
+			return Color.White;
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			if(nArr == 0)
+			{
+				MessageBox.Show("Xin vui lòng hãy khởi tạo bi trước khi chỉnh màu !", "Thông báo");
+				txtBi.Focus();
+				return;
+			}
+
+			setColor color = new setColor();
+			color.ShowDialog();
+
+			Color left = getColor(color.biTrai);
+			Color right = getColor(color.biPhai);
+
+			int dis = (gbox.Width / 2) - int.Parse(txtBi.Text.Trim()) * 60;
+
+			//khoi tao giao dien
+			for (int i = 0; i < nArr; i++)
+			{
+				if (i < nArr / 2)
+					arrButton[i].BackColor = left;
+				else if (i > nArr / 2)
+					arrButton[i].BackColor = right;
+			}
 		}
 	}
 }

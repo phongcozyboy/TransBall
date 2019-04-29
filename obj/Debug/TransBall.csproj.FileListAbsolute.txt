@@ -8,3 +8,4 @@ D:\DA\TransBall\TransBall\obj\Debug\TransBall.csproj.GenerateResource.cache
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.csproj.CoreCompileInputs.cache
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.exe
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.pdb
+D:\DA\TransBall\TransBall\obj\Debug\TransBall.setColor.resources
