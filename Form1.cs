@@ -20,7 +20,9 @@ namespace TransBall
 
         int nArr = 0;
         int disWidth1 = -15;
-		int step = 0;
+		int step = 1;
+		int jump = 1;
+		int ball;
 
 		private int[] arr;
         private int[] arrBalls;
@@ -39,7 +41,9 @@ namespace TransBall
             try
             {
                 nArr = (2 * int.Parse(txtBi.Text.Trim())) + 1;
-                if(int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 4)
+				ball = int.Parse(txtBi.Text.Trim());
+
+				if (int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 4)
                 {
                     MessageBox.Show("Vì số lượng không gian bị giới hạn nên bi tối đa là 4", "Thông báo");
                     txtBi.Clear();
@@ -154,72 +158,92 @@ namespace TransBall
 
 		private void btnChay_Click(object sender, EventArgs e)
 		{
-			int start = 0;
-			int end = nArr - 1;
+			bool checkLeft = true;
+			bool checkRight = false;
 
 			while (true)
 			{
-				bool checkLeft = false;
-				bool checkRight = false;
-				int plusStep = step;
-				int posRoot = 0;
-				int min = int.MaxValue;
-				int posMin;
-
-				while (arr[posRoot] != 0) posRoot++;
-
-				posMin = posRoot;
-				step++;
-
-				if (step % 2 != 0)
+				if (checkLeft)
 				{
-					for (int i = start; i < posRoot; i++)
+					int jumpTemp = 1;
+
+					while (jumpTemp <= jump)
 					{
-						if (arr[i] == 1 && (posRoot - i) < min && (posRoot - i) <= 2)
-						{
-							min = posRoot - i;
-							posMin = i;
-							checkLeft = true;
-						}
+						bool checkQuit = true;
+						int posRoot = 0;
+						int posMin;
+						int min = int.MaxValue;
+
+						while (arr[posRoot] != 0) posRoot++;
+						posMin = posRoot;
+
+						for (int i = 0; i < posRoot; i++)
+							if (arr[i] == 1 && Math.Abs(posRoot - i) <= 2 && Math.Abs(posRoot - i) < min)
+							{
+								min = Math.Abs(posRoot - i);
+								posMin = i;
+								checkQuit = false;
+							}
+
+						if (checkQuit) break;
+
+						swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
+
+						jumpTemp++;
+						step++;
 					}
 
-					if (!checkLeft && arr[posRoot + 2] == 1)
-						posMin = posRoot + 2;
+					if (jump < ball)
+						jump++;
 				}
-				else
+
+				if (checkRight)
 				{
-					for (int i = end; i > posRoot; i--)
+					int jumpTemp = 1;
+
+					while (jumpTemp <= jump)
 					{
-						if (arr[i] == 2 && Math.Abs(posRoot - i) < min && Math.Abs(posRoot - i) <= 2)
-						{
-							min = Math.Abs(posRoot - i);
-							posMin = i;
-							checkRight = true;
-						}
+						bool checkQuit = true;
+						int posRoot = 0;
+						int posMin;
+						int min = int.MaxValue;
+
+						while (arr[posRoot] != 0) posRoot++;
+
+						posMin = posRoot;
+
+						for (int i = nArr - 1; i > posRoot; i--)
+							if (arr[i] == 2 && Math.Abs(posRoot - i) <= 2 && Math.Abs(posRoot - i) < min)
+							{
+								posMin = i;
+								min = Math.Abs(posRoot - i);
+								checkQuit = false;
+							}
+
+						if (checkQuit) break;
+
+						swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
+
+						jumpTemp++;
+						step++;
 					}
 
-					if (!checkRight && arr[posMin - 2] == 2)
-						posMin = posRoot - 2;
+					if (jump < ball)
+						jump++;
 				}
 
-				if (posMin == posRoot && step % 2 != 0)
+				if (checkLeft == true)
 				{
-					posMin = posRoot - 1;
-					plusStep++;
+					checkRight = true;
+					checkLeft = false;
 				}
-				else if (posMin == posRoot && step % 2 == 0)
+				else if (checkRight == true)
 				{
-					posMin = posRoot + 1;
-					plusStep++;
+					checkLeft = true;
+					checkRight = false;
 				}
 
-				swapButton(ref arrButton[posRoot], ref arrButton[posMin], ref posRoot, ref posMin);
-
-
-				if (arrBalls[start] == arr[start]) start++;
-
-				if (arrBalls[end] == arr[end]) end--;
-
+				// check win
 				bool checkOut = true;
 				for (int i = 0; i < nArr; i++)
 					if (arrBalls[i] != arr[i])
@@ -227,9 +251,6 @@ namespace TransBall
 
 				if (checkOut)
 					break;
-
-				step = plusStep;
-				step++;
 			}
 
 			if (MessageBox.Show("Hoàn Thành ! \nSố bước hoán vị giữa các bi là " + step.ToString() + "\nBạn có muốn chạy lại hay không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
