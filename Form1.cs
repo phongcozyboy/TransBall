@@ -43,7 +43,7 @@ namespace TransBall
                 nArr = (2 * int.Parse(txtBi.Text.Trim())) + 1;
 				ball = int.Parse(txtBi.Text.Trim());
 
-				if (int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 4)
+				if (int.Parse(txtBi.Text.Trim()) < 1 || int.Parse(txtBi.Text.Trim()) > 5)
                 {
                     MessageBox.Show("Vì số lượng không gian bị giới hạn nên bi tối đa là 4", "Thông báo");
                     txtBi.Clear();
@@ -283,71 +283,12 @@ namespace TransBall
 
 		private void btnTaobiRandom_Click(object sender, EventArgs e)
 		{
-			if (arrButton != null)
-				for (int i = 0; i < nArr; i++)
-				{
-					gbox.Controls.Remove(arrButton[i]);
-					disWidth1 = -15;
-				}
-
 			int random_bi;
 			Random rd = new Random();
-			random_bi = rd.Next(1, 4);
+			random_bi = rd.Next(1, 6);
 
 			txtBi.Text = random_bi.ToString();
-
-			nArr = (2 * int.Parse(txtBi.Text.Trim())) + 1;
-
-			arr = new int[nArr];
-			arrBalls = new int[nArr];
-			arrButton = new Button[nArr];
-
-			for (int i = 0; i < nArr; i++)
-				arr[i] = arrBalls[i] = 0;
-
-			for (int i = 0; i < nArr; i++)
-			{
-				if (i < (nArr / 2))
-				{
-					arr[i] = 1;
-					arrBalls[i] = 2;
-				}
-				else if (i > (nArr / 2))
-				{
-					arr[i] = 2;
-					arrBalls[i] = 1;
-				}
-			}
-
-			int dis = (gbox.Width / 2) - int.Parse(txtBi.Text.Trim()) * 60;
-
-			//khoi tao giao dien
-			for (int i = 0; i < nArr; i++)
-			{
-				Button btn = new Button();
-				btn.Width = btn.Height = 40;
-				if (i < nArr / 2)
-				{
-					btn.BackColor = Color.Green;
-					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
-					gbox.Controls.Add(btn);
-				}
-				else if (i > nArr / 2)
-				{
-					btn.BackColor = Color.Red;
-					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
-					gbox.Controls.Add(btn);
-				}
-				else
-				{
-					btn.Location = new Point(dis + disWidth1, (gbox.Height / 2) - 15);
-					gbox.Controls.Add(btn);
-				}
-				arrButton[i] = btn;
-				disWidth1 += 60;
-			}
-
-			arrButton[nArr / 2].Visible = false;
+			btnXacNhan_Click(sender, e);
 		}
 
 		Color getColor(int indexColor)

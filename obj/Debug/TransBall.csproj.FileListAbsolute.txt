@@ -9,3 +9,14 @@ D:\DA\TransBall\TransBall\obj\Debug\TransBall.csproj.CoreCompileInputs.cache
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.exe
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.pdb
 D:\DA\TransBall\TransBall\obj\Debug\TransBall.setColor.resources
+D:\Legacy\TransBall\TransBall\bin\Debug\TransBall.exe.config
+D:\Legacy\TransBall\TransBall\bin\Debug\TransBall.exe
+D:\Legacy\TransBall\TransBall\bin\Debug\TransBall.pdb
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.csprojAssemblyReference.cache
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.Form1.resources
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.Properties.Resources.resources
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.setColor.resources
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.csproj.GenerateResource.cache
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.csproj.CoreCompileInputs.cache
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.exe
+D:\Legacy\TransBall\TransBall\obj\Debug\TransBall.pdb

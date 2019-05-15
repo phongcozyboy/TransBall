@@ -36,10 +36,10 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btnDatLai = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.btnTaobiRandom = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
 			this.button2 = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.btnTaobiRandom = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -47,7 +47,7 @@
 			// lbBi
 			// 
 			this.lbBi.AutoSize = true;
-			this.lbBi.Location = new System.Drawing.Point(6, 25);
+			this.lbBi.Location = new System.Drawing.Point(6, 38);
 			this.lbBi.Name = "lbBi";
 			this.lbBi.Size = new System.Drawing.Size(82, 13);
 			this.lbBi.TabIndex = 0;
@@ -55,14 +55,14 @@
 			// 
 			// txtBi
 			// 
-			this.txtBi.Location = new System.Drawing.Point(94, 22);
+			this.txtBi.Location = new System.Drawing.Point(97, 35);
 			this.txtBi.Name = "txtBi";
-			this.txtBi.Size = new System.Drawing.Size(92, 20);
+			this.txtBi.Size = new System.Drawing.Size(160, 20);
 			this.txtBi.TabIndex = 1;
 			// 
 			// btnXacNhan
 			// 
-			this.btnXacNhan.Location = new System.Drawing.Point(13, 62);
+			this.btnXacNhan.Location = new System.Drawing.Point(97, 71);
 			this.btnXacNhan.Name = "btnXacNhan";
 			this.btnXacNhan.Size = new System.Drawing.Size(75, 23);
 			this.btnXacNhan.TabIndex = 2;
@@ -72,7 +72,7 @@
 			// 
 			// btnChay
 			// 
-			this.btnChay.Location = new System.Drawing.Point(517, 107);
+			this.btnChay.Location = new System.Drawing.Point(653, 89);
 			this.btnChay.Name = "btnChay";
 			this.btnChay.Size = new System.Drawing.Size(75, 23);
 			this.btnChay.TabIndex = 3;
@@ -82,9 +82,9 @@
 			// 
 			// gbox
 			// 
-			this.gbox.Location = new System.Drawing.Point(15, 136);
+			this.gbox.Location = new System.Drawing.Point(15, 127);
 			this.gbox.Name = "gbox";
-			this.gbox.Size = new System.Drawing.Size(577, 214);
+			this.gbox.Size = new System.Drawing.Size(713, 214);
 			this.gbox.TabIndex = 4;
 			this.gbox.TabStop = false;
 			this.gbox.Text = "Mô phỏng di chuyển";
@@ -95,16 +95,16 @@
 			this.groupBox1.Controls.Add(this.lbBi);
 			this.groupBox1.Controls.Add(this.btnXacNhan);
 			this.groupBox1.Controls.Add(this.txtBi);
-			this.groupBox1.Location = new System.Drawing.Point(15, 12);
+			this.groupBox1.Location = new System.Drawing.Point(29, 12);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(209, 100);
+			this.groupBox1.Size = new System.Drawing.Size(289, 100);
 			this.groupBox1.TabIndex = 5;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Cơ bản";
 			// 
 			// btnDatLai
 			// 
-			this.btnDatLai.Location = new System.Drawing.Point(111, 62);
+			this.btnDatLai.Location = new System.Drawing.Point(182, 71);
 			this.btnDatLai.Name = "btnDatLai";
 			this.btnDatLai.Size = new System.Drawing.Size(75, 23);
 			this.btnDatLai.TabIndex = 3;
@@ -118,31 +118,22 @@
 			this.groupBox2.Controls.Add(this.label2);
 			this.groupBox2.Controls.Add(this.btnTaobiRandom);
 			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Location = new System.Drawing.Point(257, 12);
+			this.groupBox2.Location = new System.Drawing.Point(339, 12);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(200, 100);
+			this.groupBox2.Size = new System.Drawing.Size(253, 100);
 			this.groupBox2.TabIndex = 6;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Nâng cao";
 			// 
-			// label1
+			// button2
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(6, 25);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(99, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Tạo bi ngẫu nhiên: ";
-			// 
-			// btnTaobiRandom
-			// 
-			this.btnTaobiRandom.Location = new System.Drawing.Point(119, 19);
-			this.btnTaobiRandom.Name = "btnTaobiRandom";
-			this.btnTaobiRandom.Size = new System.Drawing.Size(75, 23);
-			this.btnTaobiRandom.TabIndex = 1;
-			this.btnTaobiRandom.Text = "Tạo bi";
-			this.btnTaobiRandom.UseVisualStyleBackColor = true;
-			this.btnTaobiRandom.Click += new System.EventHandler(this.btnTaobiRandom_Click);
+			this.button2.Location = new System.Drawing.Point(147, 57);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 3;
+			this.button2.Text = "Chỉnh màu";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// label2
 			// 
@@ -153,21 +144,30 @@
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Chỉnh màu sắc cho bi: ";
 			// 
-			// button2
+			// btnTaobiRandom
 			// 
-			this.button2.Location = new System.Drawing.Point(119, 57);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 3;
-			this.button2.Text = "Chỉnh màu";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.btnTaobiRandom.Location = new System.Drawing.Point(147, 22);
+			this.btnTaobiRandom.Name = "btnTaobiRandom";
+			this.btnTaobiRandom.Size = new System.Drawing.Size(75, 23);
+			this.btnTaobiRandom.TabIndex = 1;
+			this.btnTaobiRandom.Text = "Tạo bi";
+			this.btnTaobiRandom.UseVisualStyleBackColor = true;
+			this.btnTaobiRandom.Click += new System.EventHandler(this.btnTaobiRandom_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(6, 25);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(99, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Tạo bi ngẫu nhiên: ";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(619, 362);
+			this.ClientSize = new System.Drawing.Size(760, 362);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnChay);
 			this.Controls.Add(this.groupBox1);
