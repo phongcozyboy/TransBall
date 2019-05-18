@@ -255,16 +255,15 @@ namespace TransBall
 
 			if (MessageBox.Show("Hoàn Thành ! \nSố bước hoán vị giữa các bi là " + step.ToString() + "\nBạn có muốn chạy lại hay không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				txtBi.Clear();
-				txtBi.Focus();
-
 				for (int i = 0; i < nArr; i++)
 					gbox.Controls.Remove(arrButton[i]);
-					
 
+
+				txtBi.Clear();
+				txtBi.Focus();
 				disWidth1 = -15;
-				step = 0;
-
+				step = 1;
+				jump = 1;
 			}
 		}
 
@@ -278,7 +277,8 @@ namespace TransBall
 
 
 			disWidth1 = -15;
-			step = 0;
+			jump = 1;
+			step = 1;
 		}
 
 		private void btnTaobiRandom_Click(object sender, EventArgs e)
